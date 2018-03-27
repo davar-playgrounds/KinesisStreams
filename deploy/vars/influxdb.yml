@@ -1,0 +1,6 @@
+---
+influxdb:
+  influxdb_repo: https://repos.influxdata.com/rhel/2016.09/\$basearch/stable
+  influxdb_repo_key: https://repos.influxdata.com/influxdb.key
+  influxdb_ip_address: localhost
+  influxdb_database_name: demodb

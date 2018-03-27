@@ -1,0 +1,9 @@
+---
+- name: deploy jar to remote host
+  copy:
+    src: "{{ app.src }}"
+    dest: "{{ app.dest }}"
+    owner: root
+    group: root
+    mode: 0744
+  notify: restart service

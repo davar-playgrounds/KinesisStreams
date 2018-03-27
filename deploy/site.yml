@@ -1,0 +1,14 @@
+---
+- hosts: grafana
+  become: yes
+  become_user: root
+  become_method: sudo
+  gather_facts: yes
+  vars_files:
+    - 'vars/grafana.yml'
+    - 'vars/influxdb.yml'
+#    - 'vars/app.yml'
+  roles:
+    - influxdb
+    - grafana
+#    - app

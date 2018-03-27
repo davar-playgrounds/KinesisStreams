@@ -1,0 +1,14 @@
+---
+- name: Create database
+  influxdb_database:
+      hostname: "{{influxdb.influxdb_ip_address}}"
+      database_name: "{{influxdb.influxdb_database_name}}"
+      state: present
+
+- name: create 1 week retention policy
+  influxdb_retention_policy:
+      hostname: "{{influxdb.influxdb_ip_address}}"
+      database_name: "{{influxdb.influxdb_database_name}}"
+      policy_name: test
+      duration: 1w
+      replication: 1

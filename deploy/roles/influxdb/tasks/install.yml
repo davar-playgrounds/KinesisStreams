@@ -1,0 +1,8 @@
+---
+- pip:
+    name: influxdb
+
+- name: Install InfluxDB packages
+  package:
+    name: influxdb
+    state: present

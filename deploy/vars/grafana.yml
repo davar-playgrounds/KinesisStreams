@@ -1,0 +1,5 @@
+---
+grafana:
+  grafana_repo: https://packagecloud.io/grafana/stable/el/6/$basearch
+#  grafana_repo: https://packagecloud.io/grafana/stable/el/$releasever/$basearch
+  grafana_repo_key: https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana

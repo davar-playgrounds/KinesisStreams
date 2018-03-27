@@ -1,0 +1,5 @@
+---
+app:
+  src: path_to_jar_app/app.jar
+  dest: /opt/app/app.jar
+  service: myapp

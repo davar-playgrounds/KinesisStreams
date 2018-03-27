@@ -1,0 +1,8 @@
+---
+# file: roles/app/handlers/main.yml
+
+- name: restart service
+  service:
+    name: "{{ app.service }}"
+    enabled: yes
+    state: restarted

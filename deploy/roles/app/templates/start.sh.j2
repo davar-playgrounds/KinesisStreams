@@ -1,0 +1,16 @@
+#!/bin/sh
+
+#go to the working directory
+cd /opt/{{ app.service }}
+
+#start service
+echo "Starting service..."
+/usr/bin/java -jar /opt/app/app.jar 2>&1 >/dev/null | logger
+
+#check if service started
+if [ $? -eq 0 ]
+then
+  echo "Service Started `date`"
+else
+  echo "Could not start service"
+fi

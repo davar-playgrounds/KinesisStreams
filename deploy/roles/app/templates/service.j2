@@ -1,0 +1,8 @@
+[Unit]
+Description={{ app.service }} service
+[Service]
+ExecStart=/opt/app/bin/{{ app.service }}-start.sh
+Type=simple
+LimitNOFILE=32768
+[Install]
+WantedBy=multi-user.target

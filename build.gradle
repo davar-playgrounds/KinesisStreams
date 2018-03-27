@@ -1,0 +1,57 @@
+group 'kinesis-streams'
+
+buildscript {
+    ext.kotlin_version = '1.2.30'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ua.in.smartjava.processor.metics.MetricsProcessorKt'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+mainClassName = 'ua.in.smartjava.processor.metics.MetricsProcessorKt'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile 'com.amazonaws:amazon-kinesis-client:1.9.0'
+    compile 'com.amazonaws:amazon-kinesis-producer:0.12.8'
+
+    compile 'org.influxdb:influxdb-java:2.9'
+
+    compile 'com.fasterxml.jackson.core:jackson-core:2.9.4'
+    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.9.4'
+    compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.+'
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.slf4j:slf4j-simple:1.7.25'
+}
+
+sourceSets {
+    main.kotlin.srcDirs("src/main/kotlin")
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
